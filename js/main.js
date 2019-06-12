@@ -524,7 +524,7 @@ function setPoligons() {
 
 //Set Rotate Matrix
 function setRotateMatrix(type) {
-	var theta = parseFloat(ROTATE_INPUT.value)*Math.PI/180;
+	var theta = 0;//parseFloat(ROTATE_INPUT.value)*Math.PI/180.0;
 	
 	if(type == 0) {
 		ROTATE_MATRIX_MOUSE = [
