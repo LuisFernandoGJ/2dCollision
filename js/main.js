@@ -10,9 +10,11 @@ var POLYGON_1, POLYGON_2, ROTATE_MATRIX_MOUSE, ROTATE_MATRIX_STATIC, ANY_MATRIX_
 /*
  * HTML elements
  */
-CANVAS = document.createElement('canvas');
+CANVAS = document.getElementById("Canvacas");//document.createElement('canvas');
 CANVAS.width = 1280;//global_SVG.setAttribute('width', '1280');
 CANVAS.height = 720;//global_SVG.setAttribute('height', '720');
+
+CONTEXT = CANVAS.getContext('2d');
 
 CODE_INPUT = document.createElement('input');
 CODE_INPUT.setAttribute('type', 'text');
@@ -87,12 +89,8 @@ MATRIX_BUTTONS.push(element);
 
 
 
-var CONTEXT = CANVAS.getContext('2d');
-
-
-
 //Appending Children
-document.body.appendChild(CANVAS);
+//document.body.appendChild(CANVAS);
 document.body.appendChild(NUMBERS);
 document.write('<br>');
 document.body.appendChild(CODE_BUTTON);
