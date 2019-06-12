@@ -87,40 +87,60 @@ MATRIX_BUTTONS.push(element);
 
 
 
-var CONTEXT = CANVAS.getContext('2d');
+CONTEXT = CANVAS.getContext('2d');
 
 
 
 //Appending Children
 document.body.appendChild(CANVAS);
-/*document.body.appendChild(NUMBERS);
-document.write('<br>');
+document.body.appendChild(NUMBERS);
+
+element = document.createElement('div');
+document.body.appendChild(element);
+
 document.body.appendChild(CODE_BUTTON);
-document.write('&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;');
+
+element = document.createElement('span');
+element.innerHTML = '&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;';
+document.body.appendChild(element);
+
 document.body.appendChild(CODE_INPUT);
-document.write(
-	'&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;' +
-	'&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;'
-);
+
+element = document.createElement('span');
+element.innerHTML = '&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;';
+document.body.appendChild(element);
+
 document.body.appendChild(ROTATE_H3);
 document.body.appendChild(ROTATE_INPUT);
-document.write('&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;');
+
+element = document.createElement('span');
+element.innerHTML = '&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;';
+document.body.appendChild(element);
+
 document.body.appendChild(ROTATE_BUTTONS[0]);
 document.body.appendChild(ROTATE_BUTTONS[1]);
-document.write('<br>');
-document.write('<br>');
+
+element = document.createElement('div');
+element.innerHTML = '<br> <br>';
+document.body.appendChild(element);
 
 
 
 document.body.appendChild(MATRIX_H3);
 document.body.appendChild(MATRIX_BUTTONS[0]);
 document.body.appendChild(MATRIX_BUTTONS[1]);
-document.write('<br>');
+
+element = document.createElement('div');
+document.body.appendChild(element);
+
 document.body.appendChild(MATRIX_INPUTS[0]);
 document.body.appendChild(MATRIX_INPUTS[1]);
-document.write('<br>');
+
+element = document.createElement('div');
+document.body.appendChild(element);
+
 document.body.appendChild(MATRIX_INPUTS[2]);
-document.body.appendChild(MATRIX_INPUTS[3]);*/
+document.body.appendChild(MATRIX_INPUTS[3]);
 
 
 
