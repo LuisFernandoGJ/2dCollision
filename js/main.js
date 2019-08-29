@@ -2,7 +2,7 @@
  * Global Variables
  */
 var CANVAS, CONTEXT, MOUSE_X, MOUSE_Y, CODE_INPUT, CODE_BUTTON;
-var NUMBERS, ROTATE_H3, ROTATE_INPUT, ROTATE_BUTTONS, MATRIX_H3, MATRIX_INPUTS, MATRIX_BUTTONS;
+var DISTVEC, NUMBERS, ROTATE_H3, ROTATE_INPUT, ROTATE_BUTTONS, MATRIX_H3, MATRIX_INPUTS, MATRIX_BUTTONS;
 var POLYGON_1, POLYGON_2, ROTATE_MATRIX_MOUSE, ROTATE_MATRIX_STATIC, ANY_MATRIX_MOUSE, ANY_MATRIX_STATIC;
 
 
@@ -22,6 +22,7 @@ CODE_BUTTON = document.createElement('button');
 CODE_BUTTON.innerHTML = 'Inserir código dos polígonos';
 CODE_BUTTON.onclick = function() { setPoligons(); };
 
+DISTVEC = document.createElement('h1');
 NUMBERS = document.createElement('h1');
 
 ROTATE_H3 = document.createElement('h3');
@@ -93,6 +94,7 @@ CONTEXT = CANVAS.getContext('2d');
 
 //Appending Children
 document.body.appendChild(CANVAS);
+document.body.appendChild(DISTVEC);
 document.body.appendChild(NUMBERS);
 
 element = document.createElement('div');
@@ -278,7 +280,8 @@ function loop() {
 	//console.log(matrixTranslate(POLYGON_1, pos1));
 	//console.log(matrixTranslate(POLYGON_2, pos2));
 	//console.log(squareDistance);
-	NUMBERS.innerHTML = 'Menor distância: ' + Math.sqrt(squareDistance).toFixed(2);
+	DISTVEC.innerHTML = 'Vetor-distância: (' + vecMin[0][0].toFixed(0) + ', ' + vecMin[1][0].toFixed(0) + ')';
+	NUMBERS.innerHTML = 'Módulo do vetor: ' + Math.sqrt(squareDistance).toFixed(2);
 	
 	
 	
