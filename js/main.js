@@ -285,7 +285,7 @@ function loop() {
 	drawPolygon(matrix_1, pos1, '#000000');
 	drawPolygon(matrix_2, pos2, '#000000');
 	
-	drawLine(pos2, vecMin, '#00ff00');
+	drawArrow(pos2, vecMin, '#00ff00');
 	
 	
 	
@@ -410,6 +410,101 @@ function drawLine(pos0, pos1, color) {
 	);
 	
 	
+	
+	//Ends the drawing
+	CONTEXT.closePath();
+	CONTEXT.fill();
+}
+
+//Draws an arrow
+function drawArrow(pos0, pos1, color) {
+	var vecDiff, rot90, vecOrt, vecOrt2, normOrt, posMid, posFrac;
+	
+	//vector from pos0 to pos1
+	vecDiff = matrixDiff(pos1, pos0);
+	
+	//90 degrees rotation matrix
+	rot90 = [
+		[0, -1],
+		[1, 0]
+	];
+	
+	//vector 90 degrees rotated and scaled -16x
+	vecOrt = matrixMul(rot90, vecDiff);
+	vecOrt2 = matrixMul(rot90, vecDiff);
+	
+	//norm of the vecOrt
+	normOrt = Math.sqrt(matrixMul(
+		matrixTp(vecOrt),
+		vecOrt
+	)[0][0]);
+	
+	//vecOrt normalized
+	if(normOrt != 0) {
+		vecOrt = matrixTimes(2/normOrt, vecOrt);
+		vecOrt2 = matrixTimes(4/normOrt, vecOrt2);
+	}
+	
+	//position in the middle between pos0 and pos1
+	posMid = matrixSum(
+		matrixTimes(1/2, vecDiff),
+		pos0
+	);
+	
+	//position fractionated between pos0 and pos1
+	posFrac = matrixSum(
+		matrixTimes(1 - 1/8, vecDiff),
+		pos0
+	);
+	
+	//Preparing for drawing points
+	CONTEXT.fillStyle = color;
+	CONTEXT.beginPath();
+	
+	
+	
+	//Drawing points of the line
+	CONTEXT.moveTo(
+		(CANVAS.width/2) + (pos0[0][0]),
+		(CANVAS.height/2) - (pos0[1][0])
+	);
+	
+	CONTEXT.lineTo(
+		(CANVAS.width/2) + (posMid[0][0] + vecOrt[0][0]),
+		(CANVAS.height/2) - (posMid[1][0] + vecOrt[1][0])
+	);
+	
+	CONTEXT.lineTo(
+		(CANVAS.width/2) + (pos1[0][0]),
+		(CANVAS.height/2) - (pos1[1][0])
+	);
+	
+	CONTEXT.lineTo(
+		(CANVAS.width/2) + (posMid[0][0] - vecOrt[0][0]),
+		(CANVAS.height/2) - (posMid[1][0] - vecOrt[1][0])
+	);
+	
+	//Ends the drawing
+	CONTEXT.closePath();
+	CONTEXT.fill();
+	
+	
+	
+	//Drawing the arrow head
+	CONTEXT.moveTo(
+		(CANVAS.width/2) + (pos1[0][0]),
+		(CANVAS.height/2) - (pos1[1][0])
+	);
+	
+	CONTEXT.lineTo(
+		(CANVAS.width/2) + (posFrac[0][0] + vecOrt2[0][0]),
+		(CANVAS.height/2) - (posFrac[1][0] + vecOrt2[1][0])
+	);
+	
+	CONTEXT.lineTo(
+		(CANVAS.width/2) + (posFrac[0][0] - vecOrt2[0][0]),
+		(CANVAS.height/2) - (posFrac[1][0] - vecOrt2[1][0])
+	);
 	
 	//Ends the drawing
 	CONTEXT.closePath();
